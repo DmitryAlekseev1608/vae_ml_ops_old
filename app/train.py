@@ -1,12 +1,12 @@
+import numpy as np
 import torch
 from sklearn.model_selection import train_test_split
 from tqdm.notebook import tqdm
-import numpy as np
-import os
 
+from .dataset import fetch_dataset
 from .loss_func import loss_vae
 from .model import LinearVAE
-from .dataset import fetch_dataset
+
 
 def train():
 
@@ -20,8 +20,9 @@ def train():
 
     optimizer = torch.optim.Adam(autoencoder.parameters())
 
-    train_photos, val_photos, train_attrs, val_attrs = train_test_split(all_photos, all_attrs,
-                                                                        train_size=0.9, shuffle=False)
+    train_photos, val_photos, train_attrs, val_attrs = train_test_split(
+        all_photos, all_attrs, train_size=0.9, shuffle=False
+    )
     train_loader = torch.utils.data.DataLoader(train_photos, batch_size=32)
     val_loader = torch.utils.data.DataLoader(val_photos, batch_size=32)
 

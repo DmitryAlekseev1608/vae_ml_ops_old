@@ -1,12 +1,16 @@
 import fire
-from app.train import train
+
 from app.infer import infer
+from app.train import train
+
 
 def start_train():
-  train()
+    train()
+
 
 def start_infer():
-  infer()
+    infer()
+
 
 if __name__ == '__main__':
-  fire.Fire()
+    fire.Fire()
