@@ -18,7 +18,7 @@ class LinearVAE(nn.Module):
 
         # encoder
         self.encoder = nn.Sequential(
-            nn.Linear(in_features=12288, out_features=512),
+            nn.Linear(in_features=3 * 64 * 64, out_features=512),
             nn.ReLU(),
             nn.Linear(in_features=512, out_features=features * 2),
         )
