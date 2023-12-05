@@ -1,14 +1,20 @@
 import fire
 
-from app.infer import infer
-from app.train import train
+from src.infer import infer
+from src.train import train
 
 
 def start_train():
+    """
+    Function to start model's train
+    """
     train()
 
 
 def start_infer():
+    """
+    Function to start model's infer
+    """
     infer()
 
 

@@ -36,7 +36,7 @@ line_length = 90
 lines_after_imports = 2
 
 [tool.pylint.messages_control]
-disable = "C0330, C0326"
+disable = "C0114, E0401, C0103, R0914, E0402, R1725, R0201"
 
 [tool.pylint.format]
 max-line-length = "90"
