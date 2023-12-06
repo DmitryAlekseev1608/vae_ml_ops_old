@@ -2,3 +2,4 @@ data/lfw-deepfunneled/
 data/lfw_attributes.txt
 conda_env_gen/
 /poetry.lock
+/data
