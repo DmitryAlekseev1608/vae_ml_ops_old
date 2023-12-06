@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import tqdm
-from omegaconf import OmegaConf
+from omegaconf import DictConfig, OmegaConf
 from sklearn.model_selection import train_test_split
 
 from .dataset import fetch_dataset
@@ -9,7 +9,7 @@ from .loss_func import loss_vae
 from .model import LinearVAE
 
 
-def train(cfg):
+def train(cfg: DictConfig):
     """Функция обучения модели"""
 
     print(OmegaConf.to_yaml(cfg.train))

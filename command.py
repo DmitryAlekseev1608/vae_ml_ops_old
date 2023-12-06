@@ -22,6 +22,6 @@ def start_infer():
 if __name__ == '__main__':
 
     initialize(version_base=None, config_path="conf", job_name="app")
-    cfg = compose(config_name="config")
+    cfg = compose(config_name="config", return_hydra_config=True)
 
     fire.Fire()
