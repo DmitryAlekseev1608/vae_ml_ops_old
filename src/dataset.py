@@ -6,15 +6,12 @@ import skimage.io
 from skimage.transform import resize
 
 
-def fetch_dataset(
-    images_name="data/lfw-deepfunneled",
-    dx=80,
-    dy=80,
-    dimx=64,
-    dimy=64,
-):
+def fetch_dataset(cfg, images_name="data/lfw-deepfunneled", dx=80, dy=80):
 
     """Функция объявления датасета"""
+
+    dimx = cfg.model.size_img
+    dimy = cfg.model.size_img
 
     # read attrs
     df_attrs = pd.read_csv(

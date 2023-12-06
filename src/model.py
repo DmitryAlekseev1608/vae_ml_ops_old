@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 
 
-features = 16
 # define a simple linear VAE
 
 
@@ -11,23 +10,26 @@ class LinearVAE(nn.Module):
     Объявление класса модели
     """
 
-    def __init__(self):
+    def __init__(self, cfg):
         super(LinearVAE, self).__init__()
+
+        self.features = cfg.model.features
+        self.size = cfg.model.size_img
 
         self.flatten = nn.Flatten()
 
         # encoder
         self.encoder = nn.Sequential(
-            nn.Linear(in_features=3 * 64 * 64, out_features=512),
+            nn.Linear(in_features=3 * self.size**2, out_features=512),
             nn.ReLU(),
-            nn.Linear(in_features=512, out_features=features * 2),
+            nn.Linear(in_features=512, out_features=self.features * 2),
         )
 
         # decoder
         self.decoder = nn.Sequential(
-            nn.Linear(in_features=features, out_features=512),
+            nn.Linear(in_features=self.features, out_features=512),
             nn.ReLU(),
-            nn.Linear(in_features=512, out_features=12288),
+            nn.Linear(in_features=512, out_features=3 * self.size**2),
         )
 
     def reparameterize(self, mu, log_var):
@@ -44,7 +46,7 @@ class LinearVAE(nn.Module):
         """Прямой проход по нейронной сети"""
         # encoding
         x = self.flatten(x).float()
-        x = self.encoder(x).view(-1, 2, features)
+        x = self.encoder(x).view(-1, 2, self.features)
         # get `mu` and `log_var`
         mu = x[:, 0, :]  # the first feature values as mean
         log_var = x[:, 1, :]  # the other feature values as variance
@@ -60,13 +62,13 @@ class LinearVAE(nn.Module):
         """Генерирование примеров"""
         generated = self.decoder(z)
         generated = torch.sigmoid(generated)
-        generated = generated.view(-1, 64, 64, 3)
+        generated = generated.view(-1, self.size, self.size, 3)
         return generated
 
     def get_latent_vector(self, x):
         """Получение изображений из латентного пространства"""
         x = self.flatten(x).float()
-        x = self.encoder(x).view(-1, 2, features)
+        x = self.encoder(x).view(-1, 2, self.features)
         # get `mu` and `log_var`
         mu = x[:, 0, :]  # the first feature values as mean
         log_var = x[:, 1, :]  # the other feature values as variance
