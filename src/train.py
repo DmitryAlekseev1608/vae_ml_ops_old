@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from .dataset import fetch_dataset
 from .loss_func import loss_vae
 from .model import LinearVAE
-import hydra
 
 
 def train(cfg: DictConfig):
