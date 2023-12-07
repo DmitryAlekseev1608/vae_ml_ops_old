@@ -1,0 +1,11 @@
+train:
+    n_epochs: 2
+    args_cli: null
+model:
+    size_img: 16
+    features: 8
+result:
+    train_losses:
+        env:train_losses: null
+    val_losses: null
+args_cli: train

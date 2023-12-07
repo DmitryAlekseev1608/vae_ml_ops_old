@@ -18,3 +18,5 @@ python3 command.py start_train python3 command.py start_infer
 isort, black, flake8, pylint, prettier Проверка без коммита pre-commit run --all-files
 
 dvc add data
+
+python3 com.py +args_cli=train python3 com.py +args_cli=infer
