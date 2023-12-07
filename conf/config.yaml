@@ -3,6 +3,7 @@ defaults:
 
 train:
     n_epochs: 2
+    args_cli: 
 
 model:
     size_img: 16

@@ -12,7 +12,8 @@ pyenv local 3.9.8  # Activate Python 3.9 for the current project
 
 pip install poetry poetry install --no-root
 
-python3 command.py start_train python3 command.py start_infer
+python3 command.py start_train
+python3 command.py start_infer
 
 Запустите для возможности работы pre-commit install
 
