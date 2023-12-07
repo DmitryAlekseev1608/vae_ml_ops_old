@@ -1,0 +1,7 @@
+# @package _global_
+hydra:
+    callbacks:
+        my_callback:
+            _target_: src.train.MyCallback
+            train_losses: trai  n_losses
+            val_losses: val_losses
