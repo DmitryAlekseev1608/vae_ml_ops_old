@@ -17,3 +17,5 @@ python3 command.py start_train python3 command.py start_infer
 Запустите для возможности работы pre-commit install
 
 isort, black, flake8, pylint, prettier Проверка без коммита pre-commit run --all-files
+
+dvc add data
