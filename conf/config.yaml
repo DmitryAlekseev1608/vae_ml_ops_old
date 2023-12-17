@@ -3,7 +3,6 @@ defaults:
 
 train:
     n_epochs: 2
-    args_cli:
 
 model:
     size_img: 16
@@ -12,3 +11,4 @@ model:
 result:
     train_losses:
     val_losses:
+    args_cli:
