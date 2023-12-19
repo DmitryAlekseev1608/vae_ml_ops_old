@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import tqdm
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import DictConfig
 from sklearn.model_selection import train_test_split
 
 from .dataset import fetch_dataset
@@ -11,9 +11,6 @@ from .model import LinearVAE
 
 def train(cfg: DictConfig):
     """Функция обучения модели"""
-
-    print(OmegaConf.to_yaml(cfg.train))
-    print(OmegaConf.to_yaml(cfg.model))
 
     all_photos, all_attrs = fetch_dataset(cfg=cfg)
 
@@ -66,5 +63,4 @@ def train(cfg: DictConfig):
         val_losses.append(np.mean(val_losses_per_epoch))
 
     torch.save(autoencoder.state_dict(), "models/autoencoder")
-    print(f"train_loss: {round(train_losses[-1])}")
-    print(f"val_loss: {round(val_losses[-1])}")
+    return train_losses, val_losses, autoencoder

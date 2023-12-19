@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/477f6a776bc343c690a4f357bd1c4c5b/artifacts
+deleted_time: 1703017103752
+end_time: 1703016873903
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: 477f6a776bc343c690a4f357bd1c4c5b
+run_name: persistent-sow-298
+run_uuid: 477f6a776bc343c690a4f357bd1c4c5b
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703016873888
+status: 4
+tags: []
+user_id: oem

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/e8698e6ca95b4a75b626cdd0d30510c6/artifacts
+deleted_time: 1703019210382
+end_time: 1703017589439
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: e8698e6ca95b4a75b626cdd0d30510c6
+run_name: spiffy-roo-790
+run_uuid: e8698e6ca95b4a75b626cdd0d30510c6
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703017586451
+status: 3
+tags: []
+user_id: oem

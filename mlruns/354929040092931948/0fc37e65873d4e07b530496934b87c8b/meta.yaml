@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/0fc37e65873d4e07b530496934b87c8b/artifacts
+deleted_time: 1703019210372
+end_time: 1703018493693
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: 0fc37e65873d4e07b530496934b87c8b
+run_name: honorable-quail-978
+run_uuid: 0fc37e65873d4e07b530496934b87c8b
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703018493675
+status: 3
+tags: []
+user_id: oem
