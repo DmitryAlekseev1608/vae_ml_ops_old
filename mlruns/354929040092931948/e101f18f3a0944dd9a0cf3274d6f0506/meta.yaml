@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/e101f18f3a0944dd9a0cf3274d6f0506/artifacts
+deleted_time: 1703019210370
+end_time: 1703018499213
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: e101f18f3a0944dd9a0cf3274d6f0506
+run_name: skittish-donkey-747
+run_uuid: e101f18f3a0944dd9a0cf3274d6f0506
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703018493707
+status: 3
+tags: []
+user_id: oem

@@ -11,3 +11,5 @@ install isort, black, flake8, pylint, prettier Проверка без комм�
 dvc pull --remote gd_vae
 
 python3 com.py +args_cli=train python3 com.py +args_cli=infer
+
+mlflow server --host 127.0.0.1 --port 8080

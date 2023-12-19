@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/354929040092931948
+creation_time: 1703016873552
+experiment_id: "354929040092931948"
+last_update_time: 1703016873552
+lifecycle_stage: active
+name: train VAE
