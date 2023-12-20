@@ -25,6 +25,7 @@ def start(cfg: DictConfig):
     """Point entry"""
 
     if cfg.args_cli == "train":
+
         train_losses, val_losses, autoencoder = train(cfg)
 
         mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")

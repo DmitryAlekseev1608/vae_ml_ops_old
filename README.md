@@ -14,3 +14,6 @@ dvc pull --remote gd_vae
 python3 com.py +args_cli=train
 python3 com.py +args_cli=infer
 mlflow server --host 127.0.0.1 --port 8080
+
+Если Вы попробуете применить модель в infer обученную на GPU на компьютере без GPU, то не получится.
+Надо переучить модель на компьютере с CPU.

@@ -7,8 +7,3 @@ train:
 model:
     size_img: 16
     features: 8
-
-result:
-    train_losses:
-    val_losses:
-    args_cli:
