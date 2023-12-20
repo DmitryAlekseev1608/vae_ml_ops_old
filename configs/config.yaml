@@ -2,8 +2,8 @@ defaults:
     - _self_
 
 train:
-    n_epochs: 30
+    n_epochs: 3
 
 model:
-    size_img: 32
-    features: 16
+    size_img: 16
+    features: 8

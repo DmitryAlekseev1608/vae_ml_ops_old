@@ -58,11 +58,10 @@ def start(cfg: DictConfig):
 
             mlflow.set_tag("Training Info", "VAE model for fetch_dataset")
 
-            mlflow.pytorch.log_model(autoencoder, "model")
             scripted_pytorch_model = torch.jit.script(autoencoder)
             mlflow.pytorch.log_model(scripted_pytorch_model, "scripted_model")
 
-            for artifact_path in ["model/data", "scripted_model/data"]:
+            for artifact_path in ["models/autoencoder"]:
                 [
                     f.path
                     for f in MlflowClient().list_artifacts(run.info.run_id, artifact_path)
