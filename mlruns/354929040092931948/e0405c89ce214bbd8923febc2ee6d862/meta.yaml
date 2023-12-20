@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/e0405c89ce214bbd8923febc2ee6d862/artifacts
+end_time: 1703065239343
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: active
+run_id: e0405c89ce214bbd8923febc2ee6d862
+run_name: gifted-fish-894
+run_uuid: e0405c89ce214bbd8923febc2ee6d862
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703065233901
+status: 3
+tags: []
+user_id: oem
