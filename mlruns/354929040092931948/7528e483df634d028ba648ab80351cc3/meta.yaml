@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/7528e483df634d028ba648ab80351cc3/artifacts
+deleted_time: 1703078347858
+end_time: 1703068218211
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: 7528e483df634d028ba648ab80351cc3
+run_name: unequaled-midge-621
+run_uuid: 7528e483df634d028ba648ab80351cc3
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703068191619
+status: 3
+tags: []
+user_id: oem

@@ -1,8 +1,9 @@
 artifact_uri: mlflow-artifacts:/354929040092931948/e0405c89ce214bbd8923febc2ee6d862/artifacts
+deleted_time: 1703078347858
 end_time: 1703065239343
 entry_point_name: ""
 experiment_id: "354929040092931948"
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: e0405c89ce214bbd8923febc2ee6d862
 run_name: gifted-fish-894
 run_uuid: e0405c89ce214bbd8923febc2ee6d862

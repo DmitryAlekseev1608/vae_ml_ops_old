@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/107225ead9144eb48e680e74682eca48/artifacts
+deleted_time: 1703078734973
+end_time: null
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: 107225ead9144eb48e680e74682eca48
+run_name: nimble-lamb-781
+run_uuid: 107225ead9144eb48e680e74682eca48
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703078627984
+status: 1
+tags: []
+user_id: oem

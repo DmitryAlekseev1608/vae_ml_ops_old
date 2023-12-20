@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/354929040092931948/c08fec02a25c41f8b2eaa04eea1b2dbc/artifacts
+deleted_time: 1703078342313
+end_time: null
+entry_point_name: ""
+experiment_id: "354929040092931948"
+lifecycle_stage: deleted
+run_id: c08fec02a25c41f8b2eaa04eea1b2dbc
+run_name: bemused-swan-348
+run_uuid: c08fec02a25c41f8b2eaa04eea1b2dbc
+source_name: ""
+source_type: 4
+source_version: ""
+start_time: 1703068871737
+status: 1
+tags: []
+user_id: oem

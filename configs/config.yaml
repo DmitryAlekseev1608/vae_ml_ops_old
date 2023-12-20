@@ -1,0 +1,9 @@
+defaults:
+    - _self_
+
+train:
+    n_epochs: 30
+
+model:
+    size_img: 32
+    features: 16
