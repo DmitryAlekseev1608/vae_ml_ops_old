@@ -1,0 +1,5 @@
+outs:
+- md5: 2334383a7aff92ac666139cb8adc2167
+  size: 3205488
+  hash: md5
+  path: autoencoder
