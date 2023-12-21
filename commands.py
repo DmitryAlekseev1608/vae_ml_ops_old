@@ -68,6 +68,7 @@ def train():
             ]
 
     print_auto_logged_info(mlflow.get_run(run_id=run.info.run_id))
+    os.system('dvc add models/autoencoder')
     os.system('dvc push --remote gd_vae --with-deps models/autoencoder')
 
 
