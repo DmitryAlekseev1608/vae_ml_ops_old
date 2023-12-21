@@ -59,5 +59,7 @@ infer.py генерируется лица людей из случайной п
 12. Запуск исполнения кода:
     ```bash     
     python3 commands.py train
+    ```   
+    ```bash     
     python3 commands.py infer
     ```
