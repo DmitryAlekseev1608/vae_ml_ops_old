@@ -1,3 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export PATH="/home/oem/miniconda3/bin:$PATH"
 conda create --prefix /home/oem/Desktop/vae_ml_ops/conda_env_gen python=3.9 --no-default-packages 
 conda activate "/home/oem/Desktop/vae_ml_ops/conda_env_gen"

@@ -1,3 +1,4 @@
+import os
 from os.path import dirname, split
 
 import fire
@@ -35,6 +36,8 @@ def print_auto_logged_info(r):
 def train():
     """Point entry for train"""
 
+    os.system('dvc pull --remote gd_vae')
+
     mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
     mlflow.set_experiment("train VAE")
 
@@ -69,6 +72,8 @@ def train():
 
 def infer():
     """Point entry for infer"""
+
+    os.system('dvc pull --remote gd_vae --with-deps models/autoencoder')
 
     mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
     mlflow.set_experiment("infer VAE")
