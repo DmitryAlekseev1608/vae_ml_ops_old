@@ -36,7 +36,7 @@ def print_auto_logged_info(r):
 def train():
     """Point entry for train"""
 
-    os.system('dvc pull --remote gd_vae')
+    os.system('dvc pull --remote gd_vae --force')
 
     mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
     mlflow.set_experiment("train VAE")
@@ -68,12 +68,13 @@ def train():
             ]
 
     print_auto_logged_info(mlflow.get_run(run_id=run.info.run_id))
+    os.system('dvc push --remote gd_vae --with-deps models/autoencoder')
 
 
 def infer():
     """Point entry for infer"""
 
-    os.system('dvc pull --remote gd_vae --with-deps models/autoencoder')
+    os.system('dvc pull --remote gd_vae --force --with-deps models/autoencoder')
 
     mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
     mlflow.set_experiment("infer VAE")

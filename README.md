@@ -1,41 +1,63 @@
+# Описание проекта
 
+В данном проекте производится тренировка и применение автоэнкодера для генерации лиц людей.
+train.py производит тренировку автоэнкодера и сохранение полученной модели на локальный диск и на google drive.
+infer.py генерируется лица людей из случайной последовательности и сохраняет результаты в папку result ввиде .jpq файлов.
+Точкой входа в проекта является файл в корневой директории commands.py.
+В работе используется реальные датасет с фотографиями людей.
 
+# Соответствие проекта техническому заданию
 
+1. Poetry. Все зависимости добавлены в pyproject.toml.
+2. Pre-commit. В проекте реализовано применение Pre-commit в составе различных хуков включая black, isort, flake8, pylint и prettier.
+3. DVC. Управление версиями данных и их хранение произвоится через DVC на удаленном диске google drive. Скачивание необходимых данных добавлено в процесс train и infer. Управление версиями моделей также производится через DVC и хранение моделей осуществляется на удаленном диске google drive. При этом также все артифакты моделей добавлены в mlflow, что сделано опционально для отработки процесса и возможности просмотра в mlflow артефактов модели.
+4. Hydra. Для управления конфигурациями используется hydra. Конфигурации представлены в папке `сonfigs`. Реализация hydra производится через compose API для возможности использования с fire. Результаты всех экспериментов и гиперпараметры хранятся также в mlflow, поэтому достаточно было для проекта имеющихся у compose API функций.
+5. Logging. Логирование осуществляется через mlflow. Созданы два отдельных эксперимента train_VAE и infer_VAE, в которых содержатся все имеющиеся гиперпараметры (в том числе и commit-id), используемые при работе скриптов, зависимость loss_train и loss_val от эпохи и времени (более 3 графиков), а также артефакты используемых моделей нейронных сетей. Адрес mlflow добавлен в конфигурации вместе с тестовым адресом mlflow для возможности запуска на локальном компьютере (при сдаче тестовый адрес нигде не фигурирует).
+6. Данные в GIT содержатся только в объеме, требуемым ТЗ.
+7. В проекте используется fire. Отказ от Hydra в части запуска работы через CLI (используется только для управления конфигурациями) обусловлен самим текстом ТЗ, где прописаны только определенные скрипты для запуска проекта. К примеру, при применении hydra пришлось бы запускать скрипт следующим образом `python3 command.py +cfg.param=train`, а не как требуется по ТЗ `python3 command.py train`.
 
+# Рекомендуемые шаги по запуску проекта
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export PATH="/home/oem/miniconda3/bin:$PATH"
-conda create --prefix /home/oem/Desktop/vae_ml_ops/conda_env_gen python=3.9 --no-default-packages 
-conda activate "/home/oem/Desktop/vae_ml_ops/conda_env_gen"
-pip install poetry
-poetry env use /home/oem/Desktop/vae_ml_ops/conda_env_gen/bin/python3
-poetry config virtualenvs.path /home/oem/Desktop/vae_ml_ops/conda_env_gen
-poetry install --no-root
-Запустите для возможности работы
-pre-commit install
-isort, black, flake8, pylint, prettier
-Проверка без коммита
-pre-commit run --all-files
-dvc pull --remote gd_vae
-mlflow server --host 127.0.0.1 --port 8080
-python3 commands.py train
-python3 commands.py infer
-
-python3 commands.py train
+1. Установить на компьютер миниконду.
+2. Прописать путь к исполняемому файлу в PATH (указать имя USER):
+    ```bash
+    export PATH="/home/USER/miniconda3/bin:$PATH"
+    ```
+3. Создать виртуальную среду миниконда (указать имя USER):
+    ```bash
+    conda create --prefix "/home/USER/Desktop/vae_ml_ops/conda_env_gen python=3.9" --no-default-packages
+    ```
+4. При необходимости активировать среду миниконда, если это не произойдет автоматически 
+    ```bash
+    conda activate "/home/USER/Desktop/vae_ml_ops/conda_env_gen"
+    ```
+5. Далее производится уставнока poetry:
+    ```bash
+    pip install poetry
+    ```
+6. Необходимо убедиться, что poetry идентифицировал виртуальную среду:
+   ```bash
+    poetry env info
+    ```
+7. В случае, если poetry не нашел виртуальную среду, то необходимо выполнить (указать имя USER):
+   ```bash
+    poetry env use /home/USER/Desktop/vae_ml_ops/conda_env_gen/bin/python3
+    ```
+8. Если и это не помогло, то выполнить (указать имя USER):
+    ```bash   
+    poetry config virtualenvs.path /home/USER/Desktop/vae_ml_ops/conda_env_gen
+    ```
+9. Инициализация poetry:
+    ```bash
+    poetry install
+    ```
+10. Установка pre-commit:
+    ```bash   
+    pre-commit install
+    ```
+11. По ТЗ обещали, что сервер mlflow будет развернут на "http://128.0.1.1:8080".
+12. Запуск исполнения кода:
+    ```bash     
+    python3 commands.py train
+    python3 commands.py infer
+    ```
