@@ -2,11 +2,11 @@ defaults:
     - _self_
 
 train:
-    n_epochs: 3
+    n_epochs: 40
 
 model:
-    size_img: 16
-    features: 8
+    size_img: 32
+    features: 16
 
 ml_ops:
     mlflow_server: "http://128.0.1.1:8080"
