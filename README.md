@@ -25,7 +25,7 @@ infer.py генерируется лица людей из случайной п
     ```
 3. Создать виртуальную среду миниконда (указать имя USER):
     ```bash
-    conda create --prefix "/home/USER/Desktop/vae_ml_ops/conda_env_gen python=3.9" --no-default-packages
+    conda create --prefix /home/USER/Desktop/vae_ml_ops/conda_env_gen python=3.9 --no-default-packages
     ```
 4. При необходимости активировать среду миниконда, если это не произойдет автоматически 
     ```bash
