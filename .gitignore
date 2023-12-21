@@ -1,5 +1,5 @@
 conda_env_gen/
-/poetry.lock
-data/
 __pycache__/
 /outputs/
+mlartifacts/
+mlruns/

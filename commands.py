@@ -1,14 +1,14 @@
 from os.path import dirname, split
 
-import hydra
+import fire
 import mlflow
 import torch
 from git import Repo
+from hydra import compose, initialize
 from mlflow import MlflowClient
-from omegaconf import DictConfig
 
-from vae_ml_ops.infer import infer
-from vae_ml_ops.train import train
+from vae_ml_ops.infer import infer as start_infer
+from vae_ml_ops.train import train as start_train
 
 
 def _get_git_commit_id():
@@ -32,46 +32,63 @@ def print_auto_logged_info(r):
     print(f"tags: {tags}")
 
 
-@hydra.main(version_base=None, config_path="configs", config_name="config")
-def start(cfg: DictConfig):
+def train():
+    """Point entry for train"""
 
-    """Point entry"""
+    mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
+    mlflow.set_experiment("train VAE")
 
-    if cfg.args_cli == "train":
+    with mlflow.start_run() as run:
 
-        mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
-        mlflow.set_experiment("train VAE")
+        commit_id = _get_git_commit_id()
+        params = {
+            "Epoch": cfg.train.n_epochs,
+            "Image_size": cfg.model.size_img,
+            "Features": cfg.model.features,
+            "commit_id": commit_id,
+        }
 
-        with mlflow.start_run() as run:
+        mlflow.log_params(params)
 
-            commit_id = _get_git_commit_id()
-            params = {
-                "Epoch": cfg.train.n_epochs,
-                "Image_size": cfg.model.size_img,
-                "Features": cfg.model.features,
-                "commit_id": commit_id,
-            }
+        autoencoder = start_train(cfg)
 
-            mlflow.log_params(params)
+        mlflow.set_tag("Training Info", "VAE model for fetch_dataset")
 
-            autoencoder = train(cfg)
+        mlflow.pytorch.log_model(autoencoder, "model")
+        scripted_pytorch_model = torch.jit.script(autoencoder)
+        mlflow.pytorch.log_model(scripted_pytorch_model, "scripted_model")
 
-            mlflow.set_tag("Training Info", "VAE model for fetch_dataset")
+        for artifact_path in ["model/data", "scripted_model/data"]:
+            [
+                f.path
+                for f in MlflowClient().list_artifacts(run.info.run_id, artifact_path)
+            ]
 
-            scripted_pytorch_model = torch.jit.script(autoencoder)
-            mlflow.pytorch.log_model(scripted_pytorch_model, "scripted_model")
+    print_auto_logged_info(mlflow.get_run(run_id=run.info.run_id))
 
-            for artifact_path in ["models/autoencoder"]:
-                [
-                    f.path
-                    for f in MlflowClient().list_artifacts(run.info.run_id, artifact_path)
-                ]
 
-        print_auto_logged_info(mlflow.get_run(run_id=run.info.run_id))
+def infer():
+    """Point entry for infer"""
 
-    if cfg.args_cli == "infer":
-        infer(cfg)
+    mlflow.set_tracking_uri(uri=cfg.ml_ops.mlflow_server_test)
+    mlflow.set_experiment("infer VAE")
+
+    with mlflow.start_run():
+
+        commit_id = _get_git_commit_id()
+        params = {
+            "Epoch": cfg.train.n_epochs,
+            "Image_size": cfg.model.size_img,
+            "Features": cfg.model.features,
+            "commit_id": commit_id,
+        }
+        mlflow.log_params(params)
+        start_infer(cfg)
+        mlflow.set_tag("Infering Info", "VAE model for fetch_dataset")
 
 
 if __name__ == '__main__':
-    start()
+
+    initialize(version_base=None, config_path="configs", job_name="app")
+    cfg = compose(config_name="config")
+    fire.Fire()

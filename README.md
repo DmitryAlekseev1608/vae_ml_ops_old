@@ -12,7 +12,7 @@ isort, black, flake8, pylint, prettier
 pre-commit run --all-files
 dvc pull --remote gd_vae
 mlflow server --host 127.0.0.1 --port 8080
-python3 commands.py +args_cli=train
-python3 commands.py +args_cli=infer
+python3 commands.py train
+python3 commands.py infer
 
-
+python3 commands.py train

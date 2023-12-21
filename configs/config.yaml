@@ -7,3 +7,7 @@ train:
 model:
     size_img: 16
     features: 8
+
+ml_ops:
+    mlflow_server: "http://128.0.1.1:8080"
+    mlflow_server_test: "http://127.0.0.1:8080"

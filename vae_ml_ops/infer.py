@@ -27,6 +27,4 @@ def infer(cfg):
     for i in range(output.shape[0]):
         plt.subplot(output.shape[0] // 2, 2, i + 1)
         generated = output[i].cpu().detach().numpy()
-        plt.imshow(generated)
-
-    plt.show()
+        plt.imsave(f"result/result_{i}.jpg", generated)
